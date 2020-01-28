@@ -1,0 +1,9 @@
+
+<%= link_to "Create Ticket", new_user_ticket_path %>
+
+<h1>Open Tickets</h1>
+    <ul>
+    <% current_user.tickets.each do |ticket| %>
+        <li><%= link_to ticket.description, ticket_path(ticket.id) %></li>
+    <% end %>
+</ul>    

@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+      <nav class="nav_bar">
+        <ul>
+          <% if user_signed_in? %>
+            <%= button_to 'View Profile', user_path(current_user.id)%>
+            <%= button_to 'edit profile', edit_user_path(current_user.id)  %>
+            <%= button_to 'Sign Out', destroy_user_session_path, method: :delete%>
+          <% end %>
+      </ul>
+      <%= yield %>
   </body>
 </html>

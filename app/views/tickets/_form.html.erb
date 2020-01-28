@@ -1,0 +1,9 @@
+<%= form_for @ticket do |f|%>
+    <%= f.label :description, 'Description' %>
+    <%= f.text_field :description %> <br> <br>
+
+    <%= f.label :content, 'Describe the problem' %>
+    <%= f.text_area :content %> <br> <br>
+
+    <%= f.submit 'Create Ticket'%>
+<% end %>
