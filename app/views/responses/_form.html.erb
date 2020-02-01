@@ -1,0 +1,8 @@
+<%= render partial: 'layouts/errors', locals: {obj:@response} %>
+
+<h2><%= current_user.email %></h2>
+<%= form_for [@ticket,@response] do |f| %>
+    <%= f.hidden_field :ticket_id %>
+    <%= f.text_area :content %> <br>
+    <%= f.submit %>
+<% end %>

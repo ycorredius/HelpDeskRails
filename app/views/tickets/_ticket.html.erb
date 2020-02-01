@@ -1,0 +1,16 @@
+<h1><%= ticket.description %></h1>
+<p>
+    <%= ticket.content %>
+</p>
+<h3>Responses: </h3>
+<% if !ticket.responses.empty? %>
+    <ul>
+        <% ticket.responses.each do |response| %>
+            <% if response.persisted? %>
+            <p><%= response.user.email %>: <%= response.content %></p>    
+            <% end %>
+        <% end %>
+    </ul>
+<% else %>
+    <p>No Responses Found</p>
+<% end %>
