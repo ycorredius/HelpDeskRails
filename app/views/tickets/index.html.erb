@@ -3,6 +3,9 @@
 
 <h1>Open Tickets</h1>
     <ul>
+        <% if current_user.tickets.empty? %>
+            <p>No tickets created</p>
+        <% end %>
     <% current_user.tickets.each do |ticket| %>
         <li><%= link_to ticket.description, ticket_path(ticket.id) %></li>
     <% end %>
