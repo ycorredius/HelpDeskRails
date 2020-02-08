@@ -7,7 +7,11 @@
     <ul>
         <% ticket.responses.each do |response| %>
             <% if response.persisted? %>
-            <p><%= response.user.email %>: <%= response.content %></p>    
+            <p><%= response.user.email %>: <%= response.content %></p>
+                <% if current_user.responses %>
+                    <%= f.hidden_field :response_id %>
+                    <p><%= link_to "Edit", edit_user_response_path(current_user.id) %></p>    
+                <% end %>
             <% end %>
         <% end %>
     </ul>

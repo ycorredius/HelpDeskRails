@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   root to: 'welcome#welcome'
 
   get '/auth/:provider/callback', to: 'omniauth#create'
+
   resources :users do
-    resources :tickets 
+    resources :tickets
   end
+
   resources :users do
     resources :responses
   end
+
   resources :tickets , only: [:index,:show]
+
   resources :tickets do
-    resources :responses
+    resources :responses, only: [:show,:new,:create]
   end
 end

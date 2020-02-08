@@ -13,6 +13,12 @@ class ResponsesController < ApplicationController
             render :new
         end
     end
+    
+    def edit
+        binding.pry
+        @ticket = Ticket.find_by(id: params[:id])
+        @ree
+    end
 
     private
     def response_params
