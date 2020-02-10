@@ -13,8 +13,9 @@
       <nav class="nav_bar">
         <ul>
           <% if current_user %>
-            <li><%= button_to 'Sign Out', destroy_user_session_path , {method: 'delete'} %></li>
-            <li><%= link_to 'tickets', tickets_path%></li>
+            <p><%= button_to 'Sign Out', destroy_user_session_path , {method: 'delete'} %></p>
+            <p><%= link_to 'Tickets',tickets_path%></p>
+            <p><%= link_to "Home", user_path(current_user.id) %></p>
           <% end %>
       </ul>
       <%= yield %>

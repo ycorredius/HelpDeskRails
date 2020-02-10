@@ -3,14 +3,13 @@
     <%= ticket.content %>
 </p>
 <h3>Responses: </h3>
-<% if !ticket.responses.empty? %>
+<% if !ticket.responses.empty?%>
     <ul>
         <% ticket.responses.each do |response| %>
             <% if response.persisted? %>
             <p><%= response.user.email %>: <%= response.content %></p>
-                <% if current_user.responses %>
-                    <%= f.hidden_field :response_id %>
-                    <p><%= link_to "Edit", edit_user_response_path(current_user.id) %></p>    
+                <% if response.user_id == current_user.id %>
+            <p><%= link_to "Edit", edit_ticket_response_path(ticket.id,response.id) %>| <%= link_to "Delete", ticket_response_path(ticket.id,response.id),{method:'delete'} %>
                 <% end %>
             <% end %>
         <% end %>
@@ -18,3 +17,7 @@
 <% else %>
     <p>No Responses Found</p>
 <% end %>
+<% if @ticket.user_id == current_user.id %>
+<p><%= link_to "Resolved", ticket_path(ticket.id),{method:'resolved'}%></p>
+<% end %>
+

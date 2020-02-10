@@ -1,12 +1,6 @@
-
-<%= link_to "Create Ticket", new_user_ticket_path %>
-
 <h1>Open Tickets</h1>
     <ul>
-        <% if current_user.tickets.empty? %>
-            <p>No tickets created</p>
-        <% end %>
-    <% current_user.tickets.each do |ticket| %>
-        <li><%= link_to ticket.description, ticket_path(ticket.id) %></li>
+    <% @not_resolved.each do |ticket| %>
+        <p><%= link_to ticket.description, ticket_path(ticket.id) %></p>
     <% end %>
-</ul>    
+    </ul>   

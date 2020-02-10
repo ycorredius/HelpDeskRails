@@ -13,9 +13,11 @@ Rails.application.routes.draw do
     resources :responses
   end
 
-  resources :tickets , only: [:index,:show]
+  resources :tickets, only: [:index,:show]
 
   resources :tickets do
-    resources :responses, only: [:show,:new,:create]
+    resources :responses
   end
+
+  post '/tickets/:id', to: 'tickets#resolved'
 end

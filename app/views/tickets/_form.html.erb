@@ -1,9 +1,12 @@
+<%= render partial: 'layouts/errors', locals: {obj:@ticket} %>
+
+
 <%= form_for @ticket do |f|%>
     <%= f.label :description, 'Description' %>
     <%= f.text_field :description %> <br> <br>
 
     <%= f.label :content, 'Describe the problem' %>
     <%= f.text_area :content %> <br> <br>
-
-    <%= f.submit 'Create Ticket'%>
+    <%= f.hidden_field :is_resolved %>
+    <%= f.submit %>
 <% end %>
