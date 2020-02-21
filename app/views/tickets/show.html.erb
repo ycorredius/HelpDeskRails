@@ -1,7 +1,7 @@
 <%= render @ticket %>
 
 <p><%= link_to "Create Response", new_ticket_response_path(@ticket.id) %></p>
-<% if @ticket.user_id == current_user.id %>
+<% if @ticket.user_id == current_user.id && !@ticket.is_resolved %>
     <p><%= link_to 'Edit', edit_user_ticket_path(@ticket.user_id)%> | <%= link_to 'Delete', user_ticket_path(@ticket.user_id) ,{method:'delete'} %></p>
 <% end %>
 

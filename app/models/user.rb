@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :ticket_respones, through: :tickets, source: :response
   has_many :responded_tickets, through: :responses, source: :ticket
 
+  validates :name, presence: true
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

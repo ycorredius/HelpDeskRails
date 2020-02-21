@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
     before_action :find_ticket, only: [:show,:edit,:update,:destroy,:resolved]
+
     def index
         @resolved = Ticket.resolved
         @not_resolved = Ticket.not_resolved
@@ -10,9 +11,9 @@ class TicketsController < ApplicationController
     end
     
     def create
-        @ticket = current_user.tickets.create(ticket_params)
+        @ticket = current_user.tickets.new(ticket_params)
         if @ticket.save
-            redirect_to user_tickets_path(current_user.id)
+            redirect_to user_tickets_path(@ticket.id)
         else
             render :new
         end
@@ -39,6 +40,7 @@ class TicketsController < ApplicationController
             redirect_to user_tickets_path(current_user.id)
         end
     end
+
     def find_ticket
         @ticket = Ticket.find_by(id: params[:id])
     end
